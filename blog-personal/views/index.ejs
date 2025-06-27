@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Personal</title>
+</head>
+<body>
+  <% if (user) { %>
+    <p>Bienvenido, <%= user.username %> | <a href="/logout">Cerrar sesión</a> | <a href="/posts/nuevo">Nuevo Post</a></p>
+  <% } else { %>
+    <p><a href="/login">Iniciar sesión</a> | <a href="/registro">Registrarse</a></p>
+  <% } %>
+  <h1>Bienvenido a Blog Personal</h1>
+</body>
+</html>
