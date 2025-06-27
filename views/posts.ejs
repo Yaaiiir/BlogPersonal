@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publicaciones | Blog Personal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>📰 Publicaciones</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <% if (user) { %>
+        <span>Hola, <strong><%= user.username %></strong></span> |
+        <a href="/logout">Cerrar sesión</a> |
+        <a href="/posts/nuevo" class="btn-readmore">Crear nuevo post</a>
+      <% } else { %>
+        <a href="/login">Iniciar sesión</a> |
+        <a href="/register">Registrarse</a>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+    <% if (posts.length === 0) { %>
+      <p>No hay publicaciones disponibles. ¡Sé el primero en escribir!</p>
+    <% } else { %>
+      <ul class="posts-list">
+        <% posts.forEach(post => { %>
+          <li class="post">
+            <h2 class="post-title">
+              <a href="/posts/<%= post.id %>"><%= post.titulo %></a>
+            </h2>
+            <p class="post-author">
+              Por <strong><%= post.autor_nombre %></strong> el <%= new Date(post.fecha).toLocaleString() %>
+            </p>
+            <p class="post-excerpt">
+              <%= post.contenido.length > 150 ? post.contenido.substring(0, 150) + '...' : post.contenido %>
+            </p>
+            <a href="/posts/<%= post.id %>" class="btn-readmore">Leer más</a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Blog Personal — Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

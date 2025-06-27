@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registrarse | Blog Personal</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- ========= CABECERA ========= -->
+  <header>
+    <h1>📝 Registrarse</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/login">Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <!-- ========= CONTENIDO PRINCIPAL ========= -->
+  <main class="login-container">
+    <h2>Crea tu cuenta</h2>
+    <p>Llena los campos para registrarte.</p>
+
+    <% if (error) { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <form action="/register" method="POST" class="form-register">
+      <label for="username">Nombre de usuario</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        placeholder="Tu nombre de usuario"
+        value="<%= username || '' %>"
+        autocomplete="username"
+      />
+
+      <label for="email">Correo electrónico</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="tucorreo@ejemplo.com"
+        value="<%= email || '' %>"
+        autocomplete="email"
+      />
+
+      <label for="password">Contraseña</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        placeholder="••••••••"
+        autocomplete="new-password"
+      />
+
+      <label for="confirmPassword">Confirmar contraseña</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        required
+        placeholder="••••••••"
+        autocomplete="new-password"
+      />
+
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <p class="login-link">
+      ¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a>.
+    </p>
+  </main>
+
+  <!-- ========= PIE DE PÁGINA ========= -->
+  <footer>
+    <p>&copy; 2025 Blog Personal — Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
