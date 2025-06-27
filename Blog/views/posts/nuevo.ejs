@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuevo Post | Blog Personal</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- ======= CABECERA ======= -->
+  <header>
+    <h1>📝 Crear Nuevo Post</h1>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/posts">Publicaciones</a>
+      <% if (user) { %>
+        <span>Hola, <%= user.username %></span>
+        <a href="/logout">Cerrar sesión</a>
+      <% } else { %>
+        <a href="/login">Iniciar sesión</a>
+        <a href="/register">Registrarse</a>
+      <% } %>
+    </nav>
+  </header>
+
+  <!-- ======= FORMULARIO NUEVO POST ======= -->
+  <main class="login-container">
+    <h2>Comparte tus ideas</h2>
+    <p>Llena el siguiente formulario para publicar un nuevo artículo.</p>
+
+    <% if (error) { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <form action="/posts/nuevo" method="POST">
+      <label for="titulo">Título</label>
+      <input
+        type="text"
+        id="titulo"
+        name="titulo"
+        value="<%= titulo %>"
+        required
+        placeholder="Título de tu publicación"
+      />
+
+      <label for="contenido">Contenido</label>
+      <textarea
+        id="contenido"
+        name="contenido"
+        rows="10"
+        required
+        placeholder="Escribe aquí el contenido del post..."
+      ><%= contenido %></textarea>
+
+      <button type="submit">Publicar</button>
+    </form>
+  </main>
+
+  <!-- ======= PIE DE PÁGINA ======= -->
+  <footer>
+    <p>&copy; 2025 Blog Personal — Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

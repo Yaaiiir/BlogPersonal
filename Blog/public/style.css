@@ -1,0 +1,731 @@
+/* ------------------------
+   RESET BÁSICO
+------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  color: #2c3e50;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------
+   CABECERA
+------------------------ */
+header {
+  background-color: #1f2937; /* Gris oscuro azulado */
+  color: #f9fafb;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(31, 41, 55, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  user-select: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+nav a {
+  color: #f9fafb;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  user-select: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background-color: #4ade80; /* Verde lima claro */
+  color: #1f2937; /* Fondo header */
+  outline: none;
+  box-shadow: 0 0 8px #4ade80aa;
+  cursor: pointer;
+}
+
+header form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  min-width: 280px;
+}
+
+header input[type="text"] {
+  flex-grow: 1;
+  padding: 10px 14px;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  font-size: 1rem;
+  outline-offset: 2px;
+  transition: box-shadow 0.3s ease;
+  box-shadow: inset 0 0 5px #94a3b8aa;
+}
+
+header input[type="text"]:focus {
+  box-shadow: 0 0 8px #4ade80;
+  outline: none;
+}
+
+header button {
+  padding: 10px 18px;
+  border: none;
+  background-color: #4ade80;
+  color: #1f2937;
+  font-weight: 700;
+  border-radius: 0 10px 10px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+header button:hover,
+header button:focus-visible {
+  background-color: #22c55e;
+  box-shadow: 0 0 12px #22c55eaa;
+  outline: none;
+}
+
+/* ------------------------
+   CONTENEDOR PRINCIPAL
+------------------------ */
+main {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 30px 35px;
+  background-color: #ffffffdd;
+  border-radius: 16px;
+  box-shadow:
+    0 4px 12px rgba(31, 41, 55, 0.1),
+    0 1px 3px rgba(31, 41, 55, 0.06);
+  color: #334155;
+  transition: background-color 0.3s ease;
+}
+
+h2, h3, h4 {
+  margin-bottom: 18px;
+  color: #1f2937;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+p {
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #475569;
+}
+
+/* ------------------------
+   FORMULARIOS
+------------------------ */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #334155;
+  user-select: none;
+}
+
+form input,
+form textarea,
+form select {
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical;
+  color: #1e293b;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border-color: #4ade80;
+  box-shadow: 0 0 10px #4ade80aa;
+}
+
+form button {
+  background-color: #22c55e;
+  color: #f9fafb;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  align-self: flex-start;
+}
+
+form button:hover,
+form button:focus-visible {
+  background-color: #16a34a;
+  box-shadow: 0 0 12px #16a34aaa;
+  outline: none;
+}
+
+/* ------------------------
+   LISTADOS DE POSTS
+------------------------ */
+.posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.posts-list .post {
+  background: #fefefe;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 26px;
+  box-shadow:
+    0 8px 24px rgba(34, 101, 44, 0.07),
+    0 4px 8px rgba(34, 101, 44, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.posts-list .post:hover,
+.posts-list .post:focus-within {
+  transform: translateY(-5px);
+  box-shadow:
+    0 14px 36px rgba(34, 101, 44, 0.14),
+    0 6px 14px rgba(34, 101, 44, 0.1);
+  outline: none;
+}
+
+.post-title {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  color: #134e4a;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  user-select: text;
+}
+
+.post-title a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.25s ease;
+}
+
+.post-title a:hover,
+.post-title a:focus-visible {
+  color: #22c55e;
+  outline: none;
+}
+
+.post-author {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.post-excerpt {
+  font-size: 1.1rem;
+  color: #334155;
+  margin-bottom: 16px;
+  user-select: text;
+}
+
+.btn-readmore {
+  display: inline-block;
+  background-color: #22c55e;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-readmore:hover,
+.btn-readmore:focus-visible {
+  background-color: #16a34a;
+  box-shadow: 0 0 12px #16a34aaa;
+  outline: none;
+}
+
+/* ------------------------
+   POST INDIVIDUAL
+------------------------ */
+.post-detalle {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 18px;
+  box-shadow: 0 14px 32px rgba(22, 101, 64, 0.1);
+  margin-bottom: 40px;
+  color: #1e293b;
+  line-height: 1.7;
+}
+
+.post-detalle h2 {
+  font-size: 2.25rem;
+  margin-bottom: 18px;
+  font-weight: 800;
+  color: #134e4a;
+  letter-spacing: 0.04em;
+}
+
+.post-detalle .meta {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 28px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.post-detalle .contenido {
+  font-size: 1.125rem;
+  color: #334155;
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+  user-select: text;
+}
+
+/* Acciones de edición/eliminación */
+.acciones {
+  display: flex;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 14px 28px;
+  font-weight: 700;
+  border-radius: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-editar {
+  background-color: #f59e0b;
+  color: #fff;
+  box-shadow: 0 4px 15px #fbbf24aa;
+}
+
+.btn-editar:hover,
+.btn-editar:focus-visible {
+  background-color: #d97706;
+  box-shadow: 0 6px 20px #dc933caa;
+  outline: none;
+}
+
+.btn-eliminar {
+  background-color: #ef4444;
+  color: #fff;
+  box-shadow: 0 4px 15px #f87171aa;
+}
+
+.btn-eliminar:hover,
+.btn-eliminar:focus-visible {
+  background-color: #b91c1c;
+  box-shadow: 0 6px 20px #dc4c4caa;
+  outline: none;
+}
+
+/* ------------------------
+   COMENTARIOS
+------------------------ */
+.seccion-comentarios {
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(51, 105, 30, 0.07);
+}
+
+.seccion-comentarios h3 {
+  margin-bottom: 28px;
+  color: #134e4a;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.comentario {
+  border-bottom: 1px solid #d1d5db;
+  padding: 18px 0;
+  font-size: 1.05rem;
+  color: #334155;
+}
+
+.comentario:last-child {
+  border-bottom: none;
+}
+
+.comentario-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.autor {
+  font-weight: 700;
+  color: #134e4a;
+}
+
+.contenido-comentario {
+  color: #475569;
+  line-height: 1.5;
+  user-select: text;
+}
+
+/* FORMULARIO DE COMENTARIOS */
+.formulario-comentario {
+  margin-top: 28px;
+  padding: 24px 28px;
+  background-color: #e6f4ea;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(34, 117, 49, 0.1);
+}
+
+.formulario-comentario textarea {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: inherit;
+  border-radius: 14px;
+  border: 1.8px solid #9ae6b4;
+  font-size: 1.05rem;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #1a202c;
+}
+
+.formulario-comentario textarea:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 12px #22c55eaa;
+}
+
+.formulario-comentario button {
+  background-color: #22c55e;
+  color: white;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 18px;
+}
+
+.formulario-comentario button:hover,
+.formulario-comentario button:focus-visible {
+  background-color: #16a34a;
+  box-shadow: 0 0 14px #16a34aaa;
+  outline: none;
+}
+
+/* ------------------------
+   MENSAJES DE ERROR
+------------------------ */
+.error-message {
+  background-color: #ef4444;
+  color: #fff;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+  box-shadow: 0 2px 10px #ef4444bb;
+}
+
+/* ------------------------
+   PIE DE PÁGINA
+------------------------ */
+footer {
+  text-align: center;
+  padding: 26px 20px;
+  background-color: #f1f5f9;
+  color: #64748b;
+  font-size: 0.95rem;
+  user-select: none;
+  box-shadow: inset 0 1px 0 #e2e8f0;
+  margin-top: auto;
+}
+
+/* ------------------------
+   LOGIN / REGISTRO
+------------------------ */
+.login-container,
+.auth-container {
+  max-width: 480px;
+  margin: 60px auto 80px;
+  background-color: #ffffffdd;
+  padding: 40px 36px;
+  border-radius: 18px;
+  box-shadow:
+    0 6px 28px rgba(34, 117, 49, 0.15),
+    0 2px 10px rgba(34, 117, 49, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+.login-container h2,
+.auth-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #134e4a;
+  margin-bottom: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+.login-container p,
+.auth-container p {
+  text-align: center;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  color: #475569;
+  user-select: none;
+}
+
+.login-container form,
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label,
+.auth-container label {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #334155;
+  user-select: none;
+}
+
+.login-container input,
+.auth-container input,
+.login-container button,
+.auth-container button {
+  padding: 14px 18px;
+  margin-bottom: 26px;
+  border: 1.8px solid #cbd5e1;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #1e293b;
+}
+
+.login-container input:focus,
+.auth-container input:focus {
+  outline: none;
+  border-color: #4ade80;
+  box-shadow: 0 0 14px #4ade80aa;
+}
+
+.login-container button,
+.auth-container button {
+  background-color: #22c55e;
+  color: #f9fafb;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container button:hover,
+.auth-container button:hover,
+.login-container button:focus-visible,
+.auth-container button:focus-visible {
+  background-color: #16a34a;
+  box-shadow: 0 0 16px #16a34aaa;
+  outline: none;
+}
+
+/* ------------------------
+   LINKS LOGIN / REGISTER
+------------------------ */
+.login-link,
+.register-link,
+.auth-container .extra-links {
+  text-align: center;
+  margin-top: 14px;
+}
+
+.login-link a,
+.register-link a,
+.auth-container .extra-links a {
+  color: #22c55e;
+  text-decoration: none;
+  font-weight: 700;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover,
+.register-link a:hover,
+.auth-container .extra-links a:hover,
+.login-link a:focus-visible,
+.register-link a:focus-visible,
+.auth-container .extra-links a:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* ------------------------
+   RESULTADOS DE BÚSQUEDA
+------------------------ */
+.resultado-busqueda {
+  background-color: #ffffffee;
+  padding: 18px 22px;
+  border-left: 6px solid #22c55e;
+  border-radius: 14px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 18px rgba(34, 117, 49, 0.12);
+  color: #1e293b;
+  transition: background-color 0.3s ease;
+}
+
+.resultado-busqueda h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #134e4a;
+}
+
+.resultado-busqueda p {
+  font-size: 1rem;
+  color: #475569;
+  user-select: text;
+}
+
+/* ------------------------
+   RESPONSIVE
+------------------------ */
+@media (max-width: 900px) {
+  main {
+    margin: 25px 20px;
+    padding: 25px 28px;
+  }
+
+  header {
+    padding: 16px 28px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+  }
+
+  header form {
+    min-width: unset;
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  header input[type="text"],
+  header button {
+    border-radius: 12px;
+  }
+
+  header input[type="text"] {
+    padding: 12px 16px;
+  }
+
+  header button {
+    padding: 12px 18px;
+  }
+
+  .posts-list .post {
+    padding: 20px 24px;
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+  }
+
+  .post-detalle {
+    padding: 24px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .btn-editar,
+  .btn-eliminar {
+    width: 100%;
+  }
+
+  main {
+    padding: 20px 18px;
+    margin: 20px 14px;
+  }
+}
